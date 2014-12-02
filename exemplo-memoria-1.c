@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
     }
     else{
         while(1){
+            sleep(5);
             printf("segmento contém: \"%s\"\n", data);
         }
     }

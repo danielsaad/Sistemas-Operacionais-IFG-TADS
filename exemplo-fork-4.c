@@ -33,7 +33,7 @@ int main(int argc, char** argv){
     sleep(10); /** Olhe a tabela de processos **/
     if(id==0){ /** Processo Pai **/
         for(i=0;i<NUMERO_DE_PROCESSOS;i++){
-            waitpid(pid_filhos[id],&rv,0);
+            waitpid(pid_filhos[i],&rv,0);
             printf("Filhão de pid %d encerrou com código %d.\n",
                    pid_filhos[i],rv);
         }

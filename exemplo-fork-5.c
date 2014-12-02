@@ -11,7 +11,7 @@ int main(int argc, char** argv){
     int id = 0;
     int rv;
     int pid = fork();
-    char* args[] = {"ls", "-la"};
+    char* args[] = {"ls", "-la", "."};
     if(pid == -1){
         perror("Fork error:");
         exit(EXIT_FAILURE);
