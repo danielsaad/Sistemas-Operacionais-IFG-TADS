@@ -31,7 +31,7 @@ int main(void)
     int msqid;
     key_t key;
 
-    if ((key = ftok("exemplo-mensagem-kirk.c", 'B')) == -1) {  /* same key as kirk.c */
+    if ((key = ftok("mensagem-kirk.c", 'B')) == -1) {  /* same key as kirk.c */
         perror("ftok");
         exit(1);
     }

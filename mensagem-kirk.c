@@ -27,7 +27,7 @@ int main(void)
     key_t key;
 
     /** Geração de chave **/
-    if ((key = ftok("exemplo-mensagem-kirk.c", 'B')) == -1) {
+    if ((key = ftok("mensagem-kirk.c", 'B')) == -1) {
         perror("ftok: ");
         exit(1);
     }

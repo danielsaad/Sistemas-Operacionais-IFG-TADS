@@ -32,7 +32,6 @@ int main (int argc, char *argv[]){
     /* Clean up and exit */
     pthread_attr_destroy(&attr);
     pthread_exit(NULL);
-
 }
 
 

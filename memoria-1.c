@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     }
 
     /** gere a chave: (tem que ser a mesma entre os dois processos) **/
-    if ((key = ftok("exemplo-memoria-1.c", 'R')) == -1) {
+    if ((key = ftok("memoria-1.c", 'R')) == -1) {
         perror("ftok: ");
         exit(1);
     }
