@@ -1,12 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-#include <time.h>
+#include <sys/time.h>
 
-#define N (10)
+#define N (500000)
 #define N_THREADS (4)
 #define MAX (3)
 
+
+
+  
+
+ 
+ 
+double time_diff(struct timeval x , struct timeval y)
+{
+    double x_ms , y_ms , diff;
+     
+    x_ms = (double)x.tv_sec*1000000 + (double)x.tv_usec;
+    y_ms = (double)y.tv_sec*1000000 + (double)y.tv_usec;
+     
+    diff = (double)y_ms - (double)x_ms;
+     
+    return diff;
+}
 
 pthread_mutex_t prod_mutex;
 int prod = 0;
@@ -49,12 +66,14 @@ int main(void){
     pthread_attr_t attr;
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+    struct timeval before,after;
     srand(time(NULL));
     for(i=0;i<N;i++){
     	A[i] = rand()% MAX;
     	B[i] = rand()% MAX;
     }
 
+#ifdef DEBUG
     for(i=0;i<N;i++){
     	printf("%d ",A[i]);
     }
@@ -63,6 +82,9 @@ int main(void){
     	printf("%d ",B[i]);
     }
     printf("\n");
+#endif
+
+    gettimeofday(&before,NULL);
     for(i=0;i<N_THREADS;i++){
     	t_arg[i].id = i;
     	t_arg[i].A = A;
@@ -73,6 +95,8 @@ int main(void){
     for(i=0;i<N_THREADS;i++){
     	pthread_join(threads[i],(void*) &rv);
     }
+    gettimeofday(&after,NULL);
+    printf("O cálculo levou %lf microsegundos: ",time_diff(before,after));
     printf("O produto escalar é: %d\n",prod);
 	pthread_exit(NULL);
 }
