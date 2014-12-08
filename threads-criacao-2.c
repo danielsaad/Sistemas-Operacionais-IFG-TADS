@@ -37,8 +37,8 @@ int main (int argc, char *argv[]){
     /* For portability, explicitly create threads in a joinable state */
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
-    pthread_create(&threads[0], &attr, imprime_x, (void *) id);
-    pthread_create(&threads[1], &attr, imprime_o, (void *) id);
+    pthread_create(&threads[0], &attr, imprime_x, (void *) 0);
+    pthread_create(&threads[1], &attr, imprime_o, (void *) 1);
 
     /* Wait for all threads to complete */
     for(i=0;i<2;i++){
