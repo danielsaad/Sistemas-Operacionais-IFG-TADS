@@ -40,3 +40,4 @@ signal-5.c
 threads-condwait.c
 threads-criacao-1.c
 threads-criacao-2.c
+produto-escalar-pthreads.c

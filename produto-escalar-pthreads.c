@@ -47,7 +47,7 @@ void* prod_escalar(void* arg){
 	begin = t_arg->id * block_size;
 	end = t_arg->id == (N_THREADS -1) ? t_arg->size : begin+block_size;
 	for(i=begin; i<end ;i++){
-		local_prod += t_arg->A[i] * t_arg->B[i];
+        local_prod += t_arg->A[i] * t_arg->B[i];
 	}
 	printf("Thread %d -> Produto local: %d\n",t_arg->id,local_prod);
 	pthread_mutex_lock(&prod_mutex);
